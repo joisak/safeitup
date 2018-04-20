@@ -1,0 +1,15 @@
+#services {
+  @include component-base();
+  background-color: white;
+  .content-box {
+      padding-top: 5em;
+    .icons {
+        text-align: center;
+        padding-bottom: 2em;
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}

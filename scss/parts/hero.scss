@@ -1,0 +1,19 @@
+#hero {
+  background: $theme-red;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+  margin-top: -60px;
+  p {
+    font-size: 2em;
+    color: white;
+    font-weight: 700;
+    @include breakpoint(medium up) {
+      font-size: 3em;
+    }
+  }
+ 
+}

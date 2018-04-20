@@ -1,0 +1,239 @@
+//Typography
+body {
+  padding: 20px;
+  background-color: $theme-brown;
+  color: $theme-dark;
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 2em;
+  @include breakpoint(medium) {
+      font-size: 2.5em;
+  }
+    
+}
+
+
+//Helpers
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: none;
+}
+
+
+//Placeholders
+@mixin component-base($padding-bottom: 6em) {
+  margin-top: $base;
+  padding: 0 20px $padding-bottom 20px;
+}
+
+//Mixins
+@mixin headerFigure($left: true) {
+    position: relative;
+    display: inline-block;
+    &:before {
+      background-image: url(../img/spray.svg);
+      width: 30px;
+      height: 30px;
+      content: "";
+      position: absolute;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      @if $left {
+        right: auto;
+        left: -22px;
+        transform: rotate(0deg);
+      } @else {
+        right: -22px;  
+        transform: rotate(90deg);
+      }
+      
+    }
+  }
+  
+
+
+
+//Form
+input[type='text'], textarea {
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid black;
+    &:hover, &:focus, &:active, &:visited {
+        border: none;
+        border-bottom: 1px solid black;
+    }
+}
+
+.contact-form {
+    background: white;
+    form {
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        div {
+          width: 100%;
+        }
+        @include breakpoint(large) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            div {
+              width: 49%;
+            }  
+        }
+      }
+      button {
+        float: right;
+        display: block;
+        background-color: $theme-red;
+        padding: 1em 1.2em;
+        color: black;
+        font-weight: bold;
+        transition: filter 0.2s ease-in;
+        color: white;
+        &:hover {
+            filter: brightness(90%);
+            background-color: $theme-red;            
+        }
+    }
+    }
+  }
+
+textarea {
+    background: #f2f2f2;
+}
+
+
+//Topbar
+.container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: all 0.4s ease;   
+    &.panel {
+      background: white;
+      .topbar {
+        a {
+            color: $theme-dark;
+        }
+      }
+   
+    }
+    &.header-nav {
+        z-index: 99999;
+    } 
+  
+    .topbar {
+      height: calc(60px);
+      width: 100%;
+      position: relative;  
+      > .show {
+      display: block !important;
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      text-align: center;
+      top: 59px;
+      animation: fromRight 0.4s;
+     
+      
+      &.top-menu  
+      {
+          a {
+              color: black;
+          }  
+  
+          ul {
+              li {
+                  display: block;
+                  text-align: left;
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                  font-weight: 700;
+              }
+          }
+      }
+  
+  }
+      
+  
+      a {
+        color: white;
+        transition: color 0.3s ease;
+      }
+  
+      .logo {
+        font-size: 2em;
+        font-weight: 700;
+      }
+      .top-menu {
+        display: none;
+        @include breakpoint(large) {
+          display: block;
+        }
+        ul {
+          text-align: right;
+          margin: 0px;
+          list-style: none;
+        }
+        li {
+          display: inline-block;
+          padding-left: calc(20px);
+          text-transform: uppercase;
+          @include breakpoint(large) {
+            padding-left: calc(40px);
+          }
+        }
+      }
+    }
+  }
+  
+  .mobile-menu {
+    position: absolute;
+    display: block;
+    color: green;
+    right: 20px;
+    cursor: pointer;
+    color: pink;
+    @include breakpoint(large) {
+      display: none;
+    }
+  }
+  
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {
+    opacity: 0;
+  }
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+
+
+
+  @keyframes fromRight {
+      from {right:-500px;}
+      to {right: 0px;}
+  }

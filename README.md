@@ -1,2 +1,1 @@
-# safeitup
-wordpress theme
+SPINIT

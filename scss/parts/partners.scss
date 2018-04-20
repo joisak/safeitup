@@ -1,0 +1,9 @@
+
+#partners {
+  background-color: white;
+  @include component-base();
+  h2 {
+      @include headerFigure(true);
+  }
+}
+

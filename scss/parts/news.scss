@@ -1,0 +1,112 @@
+#news {
+  background-color: white;
+  @include component-base();
+  h2 {
+      @include headerFigure(false);
+    }
+  }
+  .news-container {
+    min-height: 160px;
+    position: relative;
+    .news-content {
+      box-shadow: 1px 1px 1px black;
+      padding: 2em;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background-color: red;
+        filter: brightness(110%);
+        box-shadow: 0px 10px 20px rgba(241, 107, 60, 0.2);
+        color: #fff;
+        transform: translateY(-4px);
+      }
+      h3 {
+        display: inline-block;
+        border-bottom: 7px solid red;
+      }
+      p {
+        text-align: left;
+      }
+    }
+  }
+  .news-pagination {
+    font-size: 3em;
+    color: red;
+
+    #prev,
+    #next {
+      cursor: pointer;
+      position: absolute;
+    }
+    #prev {
+      left: -50px;
+      top: 0;
+      transform: translateY(50%);
+      @include breakpoint(medium down) {
+        top: auto;
+        bottom: -40px;
+        left: 30%;
+      }
+    }
+    #next {
+      right: -50px;
+      top: 0;
+      transform: translateY(50%);
+      @include breakpoint(medium down) {
+        top: auto;        
+        bottom: -40px;
+        right: 30%;
+      }
+    }
+  }
+
+
+.spinner {
+  margin: 60px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

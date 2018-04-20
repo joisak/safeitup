@@ -1,0 +1,63 @@
+#contact {
+  background-color: white;
+  @include component-base(1em);
+  h2 {
+    @include headerFigure(true);
+  }
+  .contact-box {
+   margin: auto; 
+   h3 {
+       padding-top: 2em;
+   }
+  }
+}
+
+.contact-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: #323232;
+    color: white;
+    @include breakpoint(medium down) {
+        padding-top:3em;
+        padding-bottom: 3em;
+    }
+    >div {
+        @include breakpoint(medium up) {
+            transform: translateY(-50%);
+            position: absolute;
+            top: 50%;
+          }
+    }
+
+    i {
+      font-size: 2.5em;
+      margin-right: 0.4em;
+      color:white;
+    }
+    .address {
+      display: flex;
+      align-items: center;
+      p {
+        margin-bottom: auto;
+      }
+    }
+    .mail,
+    .phone-number {
+      a {
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+    }
+    a {
+        transition: all 0.15s ease-in;
+        &:hover {
+            filter:brightness(98%);
+        }
+    }
+  }
+
+.footer {
+    margin-top: 2em;
+}
