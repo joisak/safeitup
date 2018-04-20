@@ -81,6 +81,7 @@ var contactForm = new Vue({
     errorEmail: false,
     errorPhone: false,
     errorMessage: false,
+    validForm: false,
     errors: [],
     success: false
   },

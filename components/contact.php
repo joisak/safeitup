@@ -39,20 +39,20 @@
                 <div>
                     <div>
                         <label for="fullname">Namn</label>
-                        <input v-bind:class=" { error: errorName} " id="fullname" type="text" v-model="name"  name="name">                    
+                        <input  v-bind:class=" { error: errorName} " id="fullname" type="text" v-model="name"  name="name">                    
                     </div>
                     <div>
                         <label for="email">E-mail</label>                        
-                        <input v-bind:class=" { error: errorEmail} " id="email" type="text"name="email" v-model="email">
+                        <input v-bind:class=" { error: errorEmail} " id="email" type="text" name="email" v-model="email">
                     </div>
                     <div>
                         <label for="phone">Telefonnummer</label>                        
-                        <input v-bind:class=" { error: errorPhone} " id="phone" type="text" name="phone" v-model="phone">                          
+                        <input  v-bind:class=" { error: errorPhone} " id="phone" type="text" name="phone" v-model="phone">                          
                     </div>
                 </div>
                 <label for="message">Ditt meddelnade</label>                
                 <textarea v-bind:class=" { error: errorMessage} " name="message" id="message" cols="15" rows="5" v-model="message" ></textarea>         
-                <input type="submit" class="button" v-on:click="checkForm" value="Skicka" name="submit">
+                <input  type="submit" class="button" v-bind:class="{ disabled: name == '' || email == '' || phone == '' || message == '' && !success}" v-on:click="checkForm" value="Skicka" name="submit">
             </form>
         </div>
         <div class="column contact-info small-12 medium-6 large-5">
