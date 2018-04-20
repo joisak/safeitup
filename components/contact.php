@@ -7,6 +7,7 @@
     $city = get_field('city');
     $phone = get_field('contact_phone');
     $email = get_field('contact_email');
+
     
     
   ?>
@@ -24,10 +25,10 @@
     
     <div class="contact-form column small-12 medium-6 large-6">
     
-            <form method="post" novalidate="true"> 
+            <form action="<?php echo get_template_directory_uri() ?>/sendmail.php" method="post"> 
 
             <p v-if="errors.length">
-                <b>Please Correct</b>
+                <b>Något gick snett</b>
                 <ul>
                     <li v-for="error in errors">{{ error }}</li>
                 </ul>
@@ -38,20 +39,20 @@
                 <div>
                     <div>
                         <label for="fullname">Namn</label>
-                        <input id="fullname" type="text"  name="name" v-model="name">                    
+                        <input v-bind:class=" { error: errorName} " id="fullname" type="text" v-model="name"  name="name">                    
                     </div>
                     <div>
                         <label for="email">E-mail</label>                        
-                        <input id="email" type="text"name="email" v-model="email">
+                        <input v-bind:class=" { error: errorEmail} " id="email" type="text"name="email" v-model="email">
                     </div>
                     <div>
                         <label for="phone">Telefonnummer</label>                        
-                        <input id="phone" type="text" name="phone" v-model="phone">                          
+                        <input v-bind:class=" { error: errorPhone} " id="phone" type="text" name="phone" v-model="phone">                          
                     </div>
                 </div>
                 <label for="message">Ditt meddelnade</label>                
-                <textarea name="message" id="message" cols="15" rows="5" v-model="message" ></textarea>         
-                <button class="button" v-on:click="checkForm">Skicka</button>
+                <textarea v-bind:class=" { error: errorMessage} " name="message" id="message" cols="15" rows="5" v-model="message" ></textarea>         
+                <input type="submit" class="button" v-on:click="checkForm" value="Skicka" name="submit">
             </form>
         </div>
         <div class="column contact-info small-12 medium-6 large-5">

@@ -18,6 +18,7 @@
     justify-content: center;
     background-color: #323232;
     color: white;
+    font-weight: 700;
     @include breakpoint(medium down) {
         padding-top:3em;
         padding-bottom: 3em;

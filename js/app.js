@@ -77,6 +77,10 @@ var contactForm = new Vue({
     email: "joakim.isaksson@spinit.se",
     phone: 0704202624,
     message: "Hej! Jag tycker det låter jättespännande med den här produkten. Jag vill veta mer! Hör gärna av dig :)",
+    errorName: false,
+    errorEmail: false,
+    errorPhone: false,
+    errorMessage: false,
     errors: [],
     success: false
   },
@@ -85,17 +89,40 @@ var contactForm = new Vue({
       e.preventDefault();
       
       this.errors = [];
-      if (!this.name) this.errors.push("Name requered...");
+
+      if(!this.name) {
+        this.errors.push("Name requered..."); 
+        this.errorName = true;
+      } else {
+        this.errorName = false
+      };
+
       if (!this.email) {
         this.errors.push("Need your email to wrote back...");
+        this.errorEmail = true;
       } else if (!this.validEmail(this.email)) {
         this.errors.push("Valid email is required");
+        this.errorEmail = true;
+      } else {
+        this.errorEmail = false;
       }
-      if(!this.phone) this.errors.push('Phone number please...');
-      if(!this.message) this.errors.push('Message please...');
+
+      if(!this.phone) {
+        this.errors.push('Phone number please...')
+        this.errorPhone = true;
+      } else {
+        this.errorPhone = false;
+      };
+
+      if(!this.message) {
+        this.errors.push('Message please...') 
+        this.errorMessage = true;
+      } else  {
+        this.errorMessage = false;
+      };
       
-      console.log(!this.errors.length);
-      !this.errors.lenght ? this.ajaxCall(e) : console.log('nooo');
+      !this.errors.length ? this.ajaxCall(e) : console.log('nooo');
+
       e.preventDefault();
     },
     validEmail: function(email) {
@@ -105,8 +132,9 @@ var contactForm = new Vue({
     ajaxCall: function(e) {
      e.preventDefault();
       t = this;      
-      var url=$(this).closest('form').attr('action'),
+      var url=$('form').attr('action'),
           data= {name: t.name, email: t.email, message: t.message};
+          debugger;
       $.ajax({
           url:url,
           type:'post',
@@ -118,7 +146,9 @@ var contactForm = new Vue({
               console.log(data);
              },
             error:function() {
-              console.log(data);
+              t.errors.push('Something went wrong...');
+              console.log(data, 'fail');
+              console.log(url);
             }
           });
   

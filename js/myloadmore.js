@@ -19,7 +19,7 @@ jQuery(function($) {
       $.ajax({
         url: load_more_params.ajaxurl, // AJAX handler
         data: data,
-        type: "POST",
+        type: "post",
         beforeSend: function(xhr) {
           $("#loading").addClass('spinner');
           $(".news-box").remove();
@@ -29,11 +29,12 @@ jQuery(function($) {
           if (data) {
             $(".news-container").append(data);
           } else {
-            console.log("no data");
+          $('.news-container').text('No News...');
+          
           }
         },
         error: function(data) {
-          console.log("no data...");
+          $('.news-box').text('No data...');
         }
       });
     }
