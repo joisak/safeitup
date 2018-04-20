@@ -8,8 +8,6 @@ jQuery(function($) {
         ? $("#next").addClass("disabled")
         : $("#next").removeClass("disabled");
 
-        console.log(currentPage);
-        console.log(load_more_params.max_page );
       data = {
         action: "loadmore",
         query: load_more_params.posts, // that's how we get params from wp_localize_script() function
@@ -19,7 +17,7 @@ jQuery(function($) {
       $.ajax({
         url: load_more_params.ajaxurl, // AJAX handler
         data: data,
-        type: "post",
+        type: "POST",
         beforeSend: function(xhr) {
           $("#loading").addClass('spinner');
           $(".news-box").remove();
@@ -28,13 +26,10 @@ jQuery(function($) {
           $("#loading").removeClass('spinner');
           if (data) {
             $(".news-container").append(data);
-          } else {
-          $('.news-container').text('No News...');
-          
-          }
+          } 
         },
         error: function(data) {
-          $('.news-box').text('No data...');
+          console.log("no data...");
         }
       });
     }
