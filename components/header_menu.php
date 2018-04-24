@@ -21,16 +21,16 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
  
         <ul>
             <li>
-            <a href="<?php if(is_single()){ echo '/#services'; } else { echo '#services'; }?>">Våra tjänster</a>
+            <a href="<?php if(is_single()){ echo get_home_url() . '/#services'; } else { echo '#services'; }?>">Våra tjänster</a>
             </li>
             <li>
-            <a href="<?php if(is_single()){ echo '/#partners'; } else { echo '#partners'; }?>">Samarbetspartners</a>
+            <a href="<?php if(is_single()){ echo get_home_url() . '/#partners'; } else { echo '#partners'; }?>">Samarbetspartners</a>
             </li>
             <li>
-            <a href="<?php if(is_single()){ echo '/#news'; } else { echo '#news'; }?>">Nyheter</a>
+            <a href="<?php if(is_single()){ echo get_home_url() . '/#news'; } else { echo '#news'; }?>">Nyheter</a>
             </li>
             <li>
-            <a href="<?php if(is_single()){ echo '/#contact'; } else { echo '#contact'; }?>">Kontakt</a>
+            <a href="<?php if(is_single()){ echo get_home_url() . '/#contact'; } else { echo '#contact'; }?>">Kontakt</a>
             </li>
             <li>
             <a href="#loggain">Logga in</a>
