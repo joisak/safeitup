@@ -8,9 +8,7 @@
     $phone = get_field('contact_phone');
     $email = get_field('contact_email');
 
-    
-    
-  ?>
+?>
 
 
 <div id="contact">
@@ -57,23 +55,27 @@
         </div>
         <div class="column contact-info small-12 medium-6 large-5">
                 <div>
+                    <?php if(!empty($address)) : ?>
                 <div class="address">
                     <i class="ion-ios-location"></i>
                     <div>
                         <p>
                             <?php  echo $address ?><br>
                             <?php  echo $postal_code ?>
-                            <?php  echo $city ?><br>
+                            <?php  echo $city ?>
                          </p>
                     </div>
                 </div>            
-                <div class="phone-number"><a href="#"> <i class="ion-ios-telephone"></i><span> <? echo $phone ?></span></a></div>
-                <div class="mail"><a href="#"><i class="ion-android-mail"></i><span><? echo $email ?></span></a></div>
-                <!-- <div><a href="#"><i class="ion-social-facebook"></i></a><a href="#"><i class="ion-social-instagram"></i><a href="#"><i class="ion-social-linkedin"></i></a></div>      -->
+                <?php endif; ?>
+                <?php if(!empty($phone)) : ?>
+                    <div class="phone-number"><a href="tel:<? echo $phone?>"> <i class="ion-ios-telephone"></i><span> <? echo substr($phone, 0 , 4) . " - " . substr($phone, 4, 2) . " " . substr($phone, 6, 2) . " " . substr($phone, 8); ?></span></a></div>
+                <?php endif; ?>
+
+                <?php if(!empty($email)) : ?>
+                    <div class="mail"><a href="mailto:<? echo $email ?>"><i class="ion-android-mail"></i><span><? echo $email ?></span></a></div>
+                <?php endif; ?>
             </div>     
         </div>
     
     </div>
-
-
 </div>
