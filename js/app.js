@@ -54,22 +54,26 @@ $('a[href*="#"]')
   });
 
   // Adding class 'panel' to topbar after scrolling to sticky position
-  let topbar = $('.header-nav'),
-  offsetToBody = $('#hero');
-  initalOffsetToTop = offsetToBody.offset().top;
-
-  function checkTopBarOffset() {
-    let topbarOffsetTop = topbar.offset().top;  
-    topbarOffsetTop > initalOffsetToTop ? topbar.addClass('panel') : topbar.removeClass('panel');
+  if($('#hero').length) {
+    let topbar = $('.header-nav'),
+    offsetToBody = $('#hero');
+    initalOffsetToTop = offsetToBody.offset().top;
+  
+    function checkTopBarOffset() {
+      let topbarOffsetTop = topbar.offset().top;  
+      topbarOffsetTop > initalOffsetToTop ? topbar.addClass('panel') : topbar.removeClass('panel');
+    }
+    checkTopBarOffset();
+    $(window).on('scroll', checkTopBarOffset);
   }
-  checkTopBarOffset();
-  $(window).on('scroll', checkTopBarOffset);
 
 
 
 
 
 
+
+  // Form
 var contactForm = new Vue({
   el: "form",
   data: {

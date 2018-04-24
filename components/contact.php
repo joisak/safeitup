@@ -75,9 +75,5 @@
     
     </div>
 
-    <div class="row">
-        <div class="column text-center footer">
-            <p><b>©<?php echo date("Y"); ?> SafeItUp</b></p>
-        </div>
-    </div>
+
 </div>

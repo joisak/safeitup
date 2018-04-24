@@ -1,5 +1,7 @@
 jQuery(function($) {
   $(document).ready(function() {
+    var currentPage = 0;
+
     function ajaxCall(currentPage) {
       currentPage === 0
         ? $("#prev").addClass("disabled")
@@ -19,14 +21,14 @@ jQuery(function($) {
         data: data,
         type: "POST",
         beforeSend: function(xhr) {
-          $("#loading").addClass('spinner');
+          $("#loading").addClass("spinner");
           $(".news-box").remove();
         },
         success: function(data) {
-          $("#loading").removeClass('spinner');
+          $("#loading").removeClass("spinner");
           if (data) {
             $(".news-container").append(data);
-          } 
+          }
         },
         error: function(data) {
           console.log("no data...");
@@ -34,12 +36,14 @@ jQuery(function($) {
       });
     }
 
-    var currentPage = 0;
-    ajaxCall(currentPage);
-    $("#next, #prev").click(function() {
-      currentPage =
-        $(this).attr("id") == "next" ? currentPage + 1 : currentPage - 1;
+    //Checks if its startpage
+    if ($(".row").hasClass("news-container")) {
       ajaxCall(currentPage);
-    });
+      $("#next, #prev").click(function() {
+        currentPage =
+          $(this).attr("id") == "next" ? currentPage + 1 : currentPage - 1;
+        ajaxCall(currentPage);
+      });
+    }
   });
 });

@@ -54,12 +54,12 @@ function misha_my_load_more_scripts() {
    query_posts( $args );
   
    if( have_posts() ) :
-  
+    
      // run the loop
      while( have_posts() ): the_post();
-  
+       
         ?>
-         <div class="column news-box small-12 medium-4"><div class="news-content"> <h3><?php the_title();  ?></h3><p><? the_content(); ?></p> </div></div><?php
+         <div class="column news-box small-12 medium-12 large-4"><a href="<? the_permalink(); ?>"><div class="news-content"> <h3><?php the_title();  ?></h3><hr><p><? the_excerpt(); ?><a class="read-more" href="<? the_permalink() ?>">Läs mer</a></p> </div></a></div><?php
        
      endwhile;
   

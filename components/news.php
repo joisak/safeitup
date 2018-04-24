@@ -8,7 +8,7 @@
 
 
     <div class="row">
-        <div class="column medium-12 medium-offset-0 large-10 large-offset-1">
+        <div class="column medium-12 medium-offset-0 large-12">
             <div class="row  news-container">
                 <div class="news-pagination">
                     <i class="ion-ios-arrow-back" id="prev"></i>
