@@ -27,7 +27,8 @@
       font-size:1.5em;
     }
     a {
-      color: red;
+      color: $theme-dark;
+      text-decoration: underline;
     }
   }
 

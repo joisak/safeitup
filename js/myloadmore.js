@@ -6,9 +6,10 @@ jQuery(function($) {
       currentPage === 0
         ? $("#prev").addClass("disabled")
         : $("#prev").removeClass("disabled");
-      currentPage >= load_more_params.max_page
+      currentPage >= load_more_params.max_page - 1
         ? $("#next").addClass("disabled")
         : $("#next").removeClass("disabled");
+
 
       data = {
         action: "loadmore",
@@ -16,6 +17,8 @@ jQuery(function($) {
         page: currentPage
       };
 
+      console.log(load_more_params.max_page, 'max pages');
+      
       $.ajax({
         url: load_more_params.ajaxurl, // AJAX handler
         data: data,
@@ -39,7 +42,10 @@ jQuery(function($) {
     //Checks if its startpage
     if ($(".row").hasClass("news-container")) {
       ajaxCall(currentPage);
+      console.log(currentPage, 'start');
       $("#next, #prev").click(function() {
+        console.log(load_more_params.max_page, 'max pages after click');
+        console.log(currentPage, 'click');
         currentPage =
           $(this).attr("id") == "next" ? currentPage + 1 : currentPage - 1;
         ajaxCall(currentPage);

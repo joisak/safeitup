@@ -23,7 +23,7 @@
     
     <div class="contact-form column small-12 medium-6 large-6">
     
-            <form action="<?php echo get_template_directory_uri() ?>/sendmail.php" method="post"> 
+            <form id="form" action="<?php echo get_template_directory_uri() ?>/sendmail.php" method="post"> 
 
             <p v-if="errors.length">
                 <b>Något gick snett</b>
@@ -32,7 +32,7 @@
                 </ul>
             </p>
             <p v-if="success">
-                <b>Skickat!</b>
+                <b>Ditt meddelandet har skickats!</b>
             </p>    
                 <div>
                     <div>
@@ -48,9 +48,9 @@
                         <input  v-bind:class=" { error: errorPhone} " id="phone" type="text" name="phone" v-model="phone">                          
                     </div>
                 </div>
-                <label for="message">Ditt meddelnade</label>                
+                <label for="message">Ditt meddelande</label>                
                 <textarea v-bind:class=" { error: errorMessage} " name="message" id="message" cols="15" rows="5" v-model="message" ></textarea>         
-                <input  type="submit" class="button" v-bind:class="{ disabled: name == '' || email == '' || phone == '' || message == '' && !success}" v-on:click="checkForm" value="Skicka" name="submit">
+                <input  type="submit" class="button" v-bind:class="{ disabled: name == '' || email == '' || phone == '' || message == '' && success }" v-on:click="checkForm" v-model="loading" name="kotte">
             </form>
         </div>
         <div class="column contact-info small-12 medium-6 large-5">

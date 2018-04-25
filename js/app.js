@@ -1,14 +1,13 @@
 $(".mobile-menu").click(function() {
-  console.log('kotte');
+  console.log("kotte");
   $(this).toggleClass("change");
   $(".top-menu").toggleClass("show");
 });
 
-$('.top-menu a').click(function(){
-  console.log('hej');
-  $('.show').removeClass('show');
-  $('.change').removeClass('change');  
-
+$(".top-menu a").click(function() {
+  console.log("hej");
+  $(".show").removeClass("show");
+  $(".change").removeClass("change");
 });
 
 // Select all links with hashes
@@ -53,80 +52,77 @@ $('a[href*="#"]')
     }
   });
 
-  // Adding class 'panel' to topbar after scrolling to sticky position
-  if($('#hero').length) {
-    let topbar = $('.header-nav'),
-    offsetToBody = $('#hero');
-    initalOffsetToTop = offsetToBody.offset().top;
-  
-    function checkTopBarOffset() {
-      let topbarOffsetTop = topbar.offset().top;  
-      topbarOffsetTop > initalOffsetToTop ? topbar.addClass('panel') : topbar.removeClass('panel');
-    }
-    checkTopBarOffset();
-    $(window).on('scroll', checkTopBarOffset);
+// Adding class 'panel' to topbar after scrolling to sticky position
+if ($("#hero").length) {
+  var topbar = $(".header-nav"),
+    offsetToBody = $("#hero");
+  initalOffsetToTop = offsetToBody.offset().top;
+
+  function checkTopBarOffset() {
+    let topbarOffsetTop = topbar.offset().top;
+    topbarOffsetTop > initalOffsetToTop
+      ? topbar.addClass("panel")
+      : topbar.removeClass("panel");
   }
+  checkTopBarOffset();
+  $(window).on("scroll", checkTopBarOffset);
+}
 
-
-
-
-
-
-
-  // Form
+// Form
 var contactForm = new Vue({
-  el: "form",
+  el: "#form",
   data: {
-    name: "Joakim Isaksson",
-    email: "joakim.isaksson@spinit.se",
-    phone: 0704202624,
-    message: "Hej! Jag tycker det låter jättespännande med den här produkten. Jag vill veta mer! Hör gärna av dig :)",
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
     errorName: false,
     errorEmail: false,
     errorPhone: false,
     errorMessage: false,
     validForm: false,
     errors: [],
+    loading: 'Skicka',
     success: false
   },
   methods: {
     checkForm: function(e) {
       e.preventDefault();
-      
+
       this.errors = [];
 
-      if(!this.name) {
-        this.errors.push("Name requered..."); 
+      if (!this.name) {
+        this.errors.push("Skriv ditt namn");
         this.errorName = true;
       } else {
-        this.errorName = false
-      };
+        this.errorName = false;
+      }
 
       if (!this.email) {
-        this.errors.push("Need your email to wrote back...");
+        this.errors.push("Behöver din e-mail för att svara dig");
         this.errorEmail = true;
       } else if (!this.validEmail(this.email)) {
-        this.errors.push("Valid email is required");
+        this.errors.push("E-mailen är inte giltlig");
         this.errorEmail = true;
       } else {
         this.errorEmail = false;
       }
 
-      if(!this.phone) {
-        this.errors.push('Phone number please...')
+      if (!this.phone) {
+        this.errors.push("Glömt ditt telefonnummer");
         this.errorPhone = true;
       } else {
         this.errorPhone = false;
-      };
+      }
 
-      if(!this.message) {
-        this.errors.push('Message please...') 
+      if (!this.message) {
+        this.errors.push("Inget meddelande");
         this.errorMessage = true;
-      } else  {
+      } else {
         this.errorMessage = false;
-      };
-      
-      !this.errors.length ? this.ajaxCall(e) : console.log('nooo');
+      }
+
+      !this.errors.length ? this.ajaxCall(e) : console.log("nooo");
 
       e.preventDefault();
     },
@@ -134,29 +130,38 @@ var contactForm = new Vue({
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
+      cleanForm: function() {
+        
+        this.name = '';
+        this.email = '';
+        this.phone = '';
+        this.message = '';
+        
+        console.log('cleaned');
+      },
     ajaxCall: function(e) {
-     e.preventDefault();
-      t = this;      
-      var url=$('form').attr('action'),
-          data= {name: t.name, email: t.email, message: t.message};
-          debugger;
+      e.preventDefault();
+      t = this;
+      var url = $("form").attr("action"),
+        data = { name: t.name, email: t.email, message: t.message };
+
       $.ajax({
-          url:url,
-          type:'post',
-          data:data,
-          success:function(){
-            console.log('success');
-              t.success = true;
-              alert(data);
-              console.log(data);
-             },
-            error:function() {
-              t.errors.push('Something went wrong...');
-              console.log(data, 'fail');
-              console.log(url);
-            }
-          });
-  
-   }
+        url: url,
+        type: "post",
+        data: data,
+        beforeSend: function() {
+          t.loading = 'Skickar...';
+        },
+        success: function() {
+          t.loading = 'Skickat';
+          t.success = true;
+          t.cleanForm();
+        },
+        error: function() {
+          t.errors.push("Något gick snett...");
+          t.loading = 'Kotte';          
+        }
+      });
+    }
   }
 });

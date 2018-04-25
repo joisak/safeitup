@@ -36,7 +36,7 @@ get_template_part( 'components/header_menu');
                     
                     <div class="link-back">
                         <i class="ion-ios-arrow-back" id="prev"></i>
-                        <a href="<? get_home_url() ?>/">Tillbaka</a>
+                        <a href="<? echo get_home_url() ?>/">Tillbaka</a>
                     </div>
 
                     

@@ -1,5 +1,7 @@
 <?php
-
+    require('../../../wp-load.php');
+    global $wpdb;
+       
     // Only process POST reqeusts.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the form fields and remove whitespace.
@@ -17,10 +19,10 @@
 
         // Set the recipient email address.
         // FIXME: Update this to your desired email address.
-        $recipient = "joakim.pg.isaksson@gmail.com";
+        $recipient = get_bloginfo( 'admin_email' ); 
 
         // Set the email subject.
-        $subject = "New contact from $name";
+        $subject = "Nytt meddelande från $name";
 
         // Build the email content.
         $email_content = "Name: $name\n";
