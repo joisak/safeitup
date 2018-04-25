@@ -4,6 +4,9 @@ body {
   background-color: $theme-brown;
   color: $theme-dark;
   font-weight: 400;
+  @include breakpoint(small down) {
+    padding: 10px;
+  }
 }
 
 h2 {
