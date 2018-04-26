@@ -1,0 +1,63 @@
+//Form
+input[type="text"],
+textarea {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+  color: $theme-dark;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  &.error {
+    border-bottom: 1px solid red;
+  }
+}
+
+.contact-form {
+  background: white;
+  form {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      div {
+        width: 100%;
+      }
+      @include breakpoint(large) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        div {
+          width: 49%;
+        }
+      }
+    }
+    label {
+      font-weight: 700;
+      color: $theme-dark;
+    }
+    .button {
+      float: right;
+      display: block;
+      background-color: $theme-red;
+      padding: 1em 1.2em;
+      color: black;
+      font-weight: bold;
+      transition: filter 0.2s ease-in;
+      color: white;
+      &:hover {
+        filter: brightness(90%);
+        background-color: $theme-red;
+      }
+    }
+  }
+}
+
+textarea {
+  margin-top: 0.5em;
+  background: #f2f2f2;
+}
