@@ -33,7 +33,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             <a href="<?php if(is_single()){ echo get_home_url() . '/#contact'; } else { echo '#contact'; }?>">Kontakt</a>
             </li>
             <li>
-            <a href="#loggain">Logga in</a>
+            <a href="https://kund.safeitup.se">Logga in</a>
             </li>
         </ul>
         </div>

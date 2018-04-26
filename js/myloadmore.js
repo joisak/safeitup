@@ -6,7 +6,7 @@ jQuery(function($) {
       currentPage === 0
         ? $("#prev").addClass("disabled")
         : $("#prev").removeClass("disabled");
-      currentPage >= load_more_params.max_page - 1
+      currentPage >= load_more_params.max_page
         ? $("#next").addClass("disabled")
         : $("#next").removeClass("disabled");
 
@@ -16,8 +16,6 @@ jQuery(function($) {
         query: load_more_params.posts, // that's how we get params from wp_localize_script() function
         page: currentPage
       };
-
-      console.log(load_more_params.max_page, 'max pages');
       
       $.ajax({
         url: load_more_params.ajaxurl, // AJAX handler
@@ -42,10 +40,7 @@ jQuery(function($) {
     //Checks if its startpage
     if ($(".row").hasClass("news-container")) {
       ajaxCall(currentPage);
-      console.log(currentPage, 'start');
       $("#next, #prev").click(function() {
-        console.log(load_more_params.max_page, 'max pages after click');
-        console.log(currentPage, 'click');
         currentPage =
           $(this).attr("id") == "next" ? currentPage + 1 : currentPage - 1;
         ajaxCall(currentPage);

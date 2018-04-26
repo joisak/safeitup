@@ -59,7 +59,27 @@ function misha_my_load_more_scripts() {
      while( have_posts() ): the_post();
        
         ?>
-         <div class="column news-box small-12 medium-12 large-4"><a href="<? the_permalink(); ?>"><div class="news-content"> <h3><?php the_title();  ?></h3><hr><p><? the_excerpt(); ?><a class="read-more" href="<? the_permalink() ?>">Läs mer</a></p> </div></a></div><?php
+         <div class="column news-box small-12 medium-12 large-4">
+         <?php if(str_word_count( strip_tags( get_the_excerpt() ) ) > 50 ) : ?> 
+          <a href="<?  the_permalink(); ?>">
+            <div class="news-content"> 
+              <h3><?php the_title();  ?></h3>
+              <hr>
+              <p><? the_excerpt(); ?>
+
+           <a class="read-more" href="<? the_permalink() ?>">Läs mer</a>
+           </p>
+           </a>
+          </div>
+          <?php else : ?>
+          <div class="news-content"> 
+              <h3><?php the_title();  ?></h3>
+              <hr>
+              <p><? the_excerpt(); ?></p>
+          </div>
+          <?php endif ?>
+         </div><?php
+         
        
      endwhile;
   

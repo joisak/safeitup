@@ -50,7 +50,7 @@
                 </div>
                 <label for="message">Ditt meddelande</label>                
                 <textarea v-bind:class=" { error: errorMessage} " name="message" id="message" cols="15" rows="5" v-model="message" ></textarea>         
-                <input  type="submit" class="button" v-bind:class="{ disabled: name == '' || email == '' || phone == '' || message == '' && success }" v-on:click="checkForm" v-model="loading" name="kotte">
+                <input  type="submit" class="button" v-bind:class="{ disabled: name == '' || email == '' || phone == '' || message == '' && success }" v-on:click="checkForm" v-model="loading" name="submit">
             </form>
         </div>
         <div class="column contact-info small-12 medium-6 large-5">

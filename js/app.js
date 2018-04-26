@@ -1,11 +1,9 @@
 $(".mobile-menu").click(function() {
-  console.log("kotte");
   $(this).toggleClass("change");
   $(".top-menu").toggleClass("show");
 });
 
 $(".top-menu a").click(function() {
-  console.log("hej");
   $(".show").removeClass("show");
   $(".change").removeClass("change");
 });
@@ -72,17 +70,17 @@ if ($("#hero").length) {
 var contactForm = new Vue({
   el: "#form",
   data: {
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
     errorName: false,
     errorEmail: false,
     errorPhone: false,
     errorMessage: false,
     validForm: false,
     errors: [],
-    loading: 'Skicka',
+    loading: "Skicka",
     success: false
   },
   methods: {
@@ -130,15 +128,12 @@ var contactForm = new Vue({
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-      cleanForm: function() {
-        
-        this.name = '';
-        this.email = '';
-        this.phone = '';
-        this.message = '';
-        
-        console.log('cleaned');
-      },
+    cleanForm: function() {
+      this.name = "";
+      this.email = "";
+      this.phone = "";
+      this.message = "";
+    },
     ajaxCall: function(e) {
       e.preventDefault();
       t = this;
@@ -150,16 +145,16 @@ var contactForm = new Vue({
         type: "post",
         data: data,
         beforeSend: function() {
-          t.loading = 'Skickar...';
+          t.loading = "Skickar...";
         },
         success: function() {
-          t.loading = 'Skickat';
+          t.loading = "Skickat";
           t.success = true;
           t.cleanForm();
         },
         error: function() {
           t.errors.push("Något gick snett...");
-          t.loading = 'Kotte';          
+          t.loading = "Meddelandet skickades inte";
         }
       });
     }
