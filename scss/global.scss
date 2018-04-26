@@ -1,4 +1,7 @@
 //Typography
+html {
+  
+}
 body {
   padding: 20px;
   background-color: $theme-brown;
@@ -251,6 +254,19 @@ textarea {
   background: white;
   padding-top: 2em;
 }
+
+//404
+.not-found {
+  background: white;
+  height: 100vh;
+  h2 {
+    color: $theme-dark;
+  }
+  a {
+    color: $theme-red;
+  }
+}
+
 
 @keyframes fromRight {
   from {
