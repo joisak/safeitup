@@ -21,7 +21,8 @@ function cc_mime_types($mimes) {
 function misha_my_load_more_scripts() {
   
    global $wp_query; 
-  
+   $posts_per_page = get_option('posts_per_page');
+   $max_pages = ceil(wp_count_posts()->publish / $posts_per_page);
   
    // register our main script but do not enqueue it yet
    wp_register_script( 'my_loadmore', get_stylesheet_directory_uri() . '/js/myloadmore.js', array('jquery') );
@@ -32,9 +33,11 @@ function misha_my_load_more_scripts() {
    wp_localize_script( 'my_loadmore', 'load_more_params', array(
      'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
      'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
-     'post_on_page' => 3,
+     'post_on_page' => get_option('post_per_page'),
      'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
-     'max_page' => $wp_query->max_num_pages
+     'number_of_posts' => wp_count_posts()->publish,
+     'max_pages' => $max_pages - 1
+
    ) );
   
     wp_enqueue_script( 'my_loadmore' );

@@ -15,14 +15,13 @@
     <div class="row">
             <div class="column">
                 <h2 class="text-left"><?php echo $contact_header; ?></h2>
-                <p><?php echo $contact_body; ?></p>
             </div>
     </div>
     <div class="row contact-box align-justify">
 
     
     <div class="contact-form column small-12 medium-6 large-6">
-    
+            <p><?php echo $contact_body; ?></p>
             <form id="form" action="<?php echo get_template_directory_uri() ?>/sendmail.php" method="post"> 
 
             <p v-if="errors.length">

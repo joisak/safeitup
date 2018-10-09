@@ -16,6 +16,7 @@
     <div class="row">
         <div class="column align-middle small-12 medium-8 large-6">
         <p><?php the_content(); ?></p>
+        
 
         </div>
     </div>

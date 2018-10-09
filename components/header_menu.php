@@ -24,7 +24,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             <a href="<?php if(is_single()){ echo get_home_url() . '/#services'; } else { echo '#services'; }?>">Våra tjänster</a>
             </li>
             <li>
-            <a href="<?php if(is_single()){ echo get_home_url() . '/#partners'; } else { echo '#partners'; }?>">Samarbetspartners</a>
+            <a href="<?php if(is_single()){ echo get_home_url() . '/#partners'; } else { echo '#partners'; }?>">Kunder</a>
             </li>
             <li>
             <a href="<?php if(is_single()){ echo get_home_url() . '/#news'; } else { echo '#news'; }?>">Nyheter</a>

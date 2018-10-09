@@ -19,15 +19,17 @@
 
         // Set the recipient email address.
         // FIXME: Update this to your desired email address.
-        $recipient = get_bloginfo( 'admin_email' ); 
+        // $recipient = get_bloginfo( 'admin_email' ); 
+
+        $recipient = 'arne@safeitup.se';
 
         // Set the email subject.
-        $subject = "Nytt meddelande från $name";
+        $subject = "SafeItup: Nytt meddelande från $name";
 
         // Build the email content.
-        $email_content = "Name: $name\n";
+        $email_content = "Namn: $name\n";
         $email_content .= "Email: $email\n\n";
-        $email_content .= "Message:\n$message\n";
+        $email_content .= "Meddelande:\n$message\n";
 
         // Build the email headers.
         $email_headers = "From: $name <$email>";
