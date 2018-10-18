@@ -3,10 +3,14 @@ jQuery(function($) {
     var currentPage = 0;
 
     function ajaxCall(currentPage) {
+      console.log('current page -->' , currentPage);
+      console.log('max pages -->' , load_more_params.max_pages);
+      console.log('posts -->' , load_more_params.number_of_posts);
+
       currentPage === 0
         ? $("#prev").addClass("disabled")
         : $("#prev").removeClass("disabled");
-      currentPage >= load_more_params.max_page
+      currentPage >= load_more_params.max_pages
         ? $("#next").addClass("disabled")
         : $("#next").removeClass("disabled");
 
